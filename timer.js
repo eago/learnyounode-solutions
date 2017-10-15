@@ -1,13 +1,9 @@
 var net = require('net');
-//var formater = require('strftime')
-
 
 var server = net.createServer(function listener(socket) {
   var date = new Date();
-  //console.log(date.getHours(), date.toISOString())
   var isoString = date.toISOString()
   var now = isoString.slice(0, 10) + " " + (2 + +isoString.slice(11,13)) + isoString.slice(13,16)
-  //socket.write(formater("%Y-%m-%d %H:%m", date).toString)
   socket.write(now)
   socket.end("\n");
 })
