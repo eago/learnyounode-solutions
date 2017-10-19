@@ -9,7 +9,6 @@ http.createServer(function (req, res) {
     res.end(JSON.stringify({hour:date.getHours(), minute:date.getMinutes(), second:date.getSeconds()}));
   }
   else if (urlInfo.pathname == '/api/unixtime') {
-    console.log('/api/unixtime')
     res.end(JSON.stringify({'unixtime':date.valueOf()}))
   } else {
     console.error("I don't understand !")
