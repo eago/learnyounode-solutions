@@ -68,3 +68,42 @@ class Solution {
         
     }
 }
+
+//167. Two Sum II - Input array is sorted
+// O(log(n)*n)
+public class Solution {
+    public static int[] twoSum(int[] numbers, int target) {
+      int length = numbers.length;
+      for (int i = 0; i < length; i++) {
+        int[] subNumbers = Arrays.copyOfRange(numbers, i + 1, length);
+        int index = Arrays.binarySearch(subNumbers, target - numbers[i]);
+        if (index >= 0) {
+          return new int[] { i + 1, index + 1 + i + 1};
+        }
+      }
+      throw new IllegalArgumentException("Can't find two sum !");
+    }
+  // O(n) https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/discuss/51239/
+  public class Solution {
+    public static int[] twoSum(int[] numbers, int target) {
+      int[] res = new int[2];
+      int left = 0;
+      int right = numbers.length - 1;
+      while (left < right) {
+        int value = numbers[left] + numbers[right];
+        if (value == target) {
+          res[0] = left + 1;
+          res[1] = right + 1;
+          return res;
+        }
+        else if (value < target) {
+          left++;
+        } else {
+          right--;
+        }
+      
+      }
+      throw new IllegalArgumentException("Can't find two sum !");
+    }
+      
+  }
