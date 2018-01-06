@@ -29,7 +29,7 @@ class Solution {
 
 You may assume that each input would have exactly one solution, and you may not use the same element twice
  */
-
+// O(n^2)
  class Solution {
     public int[] twoSum(int[] nums, int target) {
         int[] res = new int[2];
@@ -47,6 +47,24 @@ You may assume that each input would have exactly one solution, and you may not 
         }
         
         return new int[]{};
+        
+    }
+}
+
+// O(n)
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> hashTable = new HashMap<Integer, Integer>();
+        
+        for (int i = 0; i < nums.length; i++) {
+            if (hashTable.containsKey(target - nums[i])) {
+                return new int[] {hashTable.get(target - nums[i]), i};
+            }
+            
+            hashTable.put(nums[i], i);
+        }
+                
+        throw new IllegalArgumentException("No two sum solution");
         
     }
 }
